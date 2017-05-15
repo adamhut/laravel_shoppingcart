@@ -34,3 +34,13 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+
+$factory->define(App\Customer::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->firstName,
+        'email' => $faker->unique()->safeEmail,
+        'phone' => $faker->phoneNumber,
+
+    ];
+});

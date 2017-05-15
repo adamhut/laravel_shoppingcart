@@ -23,8 +23,8 @@ Laravel Shopping Cart
 									Action <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
-									<li><a href="#">Reduce by 1</a></li>
-									<li><a href="#">Reduce All</a></li>
+									<li><a href="{{route('product.reduceByOne',$product['item']['id'])}}">Reduce by 1</a></li>
+									<li><a href="{{route('product.removeFromCart',$product['item']['id'])}}">Reduce All</a></li>
 								</ul>
 							</div>
 						</li>

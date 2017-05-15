@@ -23,7 +23,12 @@ class ProfileController extends Controller
     public function index()
     {
         $user=Auth::user();
-        return view('user.profile',compact('user'));
+        $orders = $user->orders;
+        $orders->transform(function($order,$key){
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return view('user.profile',compact('user','orders'));
     }
 
     /**

@@ -17,7 +17,13 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        //Session::put('oldUrl',request()->url);
+
         if (Auth::guard($guard)->check()) {
+           // if(Session::has('oldUrl'))
+            //{
+            //    return redirect()->to(Session::get('oldUrl'));
+            //}
             return redirect('/profile');
         }
 

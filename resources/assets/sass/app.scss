@@ -22,3 +22,104 @@
 	color:#7f7f7f;
 
 }
+
+.dv{
+	background: #ffffff;
+	display: flex;
+	height: 100%;
+	flex-direction:column;
+	justify-content:space-between;
+}
+
+.dv-header{
+	padding:10px 15px;
+	display: flex;
+	justify-content:space-between;
+	background: #ffffff;
+	border-bottom:1px solid #eeeeee;
+	
+	&-title{
+		flex: 2;
+		padding-right:15px;
+	}
+	&-columns{
+		flex: 2;
+		display: flex;
+		justify-content:space-between;
+		padding-right:15px;
+	}
+	
+	&-select{
+		display:block;
+		width: 100%;
+		padding-right:15px;
+	}
+	
+	&-operators{
+		flex: 2;
+		display: flex;
+		justify-content:space-between;
+		padding-right:15px;
+	}
+
+	&-search{
+		flex: 4;
+
+	}
+
+	&-input{
+		display: block;
+		width: 100%;
+		padding-right:15px;
+	}
+
+	&-submit{
+		flex: 1;
+	}
+
+	&-btn{
+		display: block;
+		width: 100%;
+	}
+}
+
+
+.dv-body{
+	flex:1;
+	//overflow: auto;	
+}
+
+.dv-table{
+	width:100%;
+	thead{
+		th {
+			padding:5px 10px;	
+		}
+	}	
+	tbody{
+		td {
+			padding:5px 10px;	
+		}
+	}	
+}
+
+
+.dv-footer {
+	padding:10px 15px;
+	display: flex;
+	justify-content:space-between;
+
+	&-input{
+		width: 40px;
+	}
+
+}
+
+.dv-footer-item{
+	display: flex;
+	justify-content:space-between;
+}
+
+.dv-footer-sub{
+	padding-left: 15px;
+}

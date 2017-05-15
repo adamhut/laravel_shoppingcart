@@ -786,6 +786,7 @@ window.Vue = __webpack_require__(37);
  */
 
 Vue.component('example', __webpack_require__(34));
+Vue.component('DataViewer', __webpack_require__(49));
 
 var app = new Vue({
   el: '#app'
@@ -41419,6 +41420,440 @@ module.exports = function(module) {
 __webpack_require__(8);
 module.exports = __webpack_require__(9);
 
+
+/***/ }),
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['source', 'title'],
+	data: function data() {
+		return {
+			model: {},
+			columns: {},
+			query: {
+				page: 1,
+				column: 'id',
+				direction: 'desc',
+				per_page: 10,
+				search_column: 'id',
+				search_operator: 'equal',
+				search_input: ''
+
+			},
+			operators: {
+				equal: '=',
+				not_equal: '<>',
+				less_than: '<',
+				greater_than: '>',
+				less_than_or_equal_to: '<=',
+				greater_than_or_equal_to: '>=',
+				in: 'IN',
+				like: 'LIKE'
+			}
+		};
+	},
+	created: function created() {
+		this.fetchIndexData();
+	},
+
+
+	methods: {
+		prev: function prev() {
+			if (this.model.prev_page_url) {
+				this.query.page--;
+				this.fetchIndexData();
+			}
+		},
+		next: function next() {
+
+			if (this.model.next_page_url) {
+				this.query.page++;
+				this.fetchIndexData();
+			}
+			//this.fetchIndexData();
+		},
+		fetchIndexData: function fetchIndexData() {
+			var _this = this;
+
+			axios.get(this.source + '?column=' + this.query.column + '\n\t\t\t\t&direction=' + this.query.direction + '\n\t\t\t\t&page=' + this.query.page + '\n\t\t\t\t&per_page=' + this.query.per_page + '\n\t\t\t\t&search_column=' + this.query.search_column + '\n\t\t\t\t&search_operator=' + this.query.search_operator + '\n\t\t\t\t&search_input=' + this.query.search_input).then(function (response) {
+				console.log(response.data);
+				_this.model = response.data.model;
+				_this.columns = response.data.columns;
+			}).catch(function (response) {
+				console.log(response);
+			});
+		},
+		toggleOrder: function toggleOrder(column) {
+			if (column === this.query.column) {
+				if (this.query.direction === 'desc') {
+					this.query.direction = 'asc';
+				} else {
+					this.query.direction = 'desc';
+				}
+			} else {
+				this.query.column = column;
+				this.query.direction = 'asc';
+			}
+			this.fetchIndexData();
+		}
+	}
+});
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(35)(
+  /* script */
+  __webpack_require__(48),
+  /* template */
+  __webpack_require__(50),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "C:\\xampp\\htdocs\\laravel_shoppingcart\\resources\\assets\\js\\components\\DataViewer.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] DataViewer.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0255447e", Component.options)
+  } else {
+    hotAPI.reload("data-v-0255447e", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "dv"
+  }, [_c('div', {
+    staticClass: "dv-header"
+  }, [_c('div', {
+    staticClass: "dv-header-title"
+  }, [_vm._v("\n\t\t\t" + _vm._s(_vm.title) + "\n\t\t")]), _vm._v(" "), _c('div', {
+    staticClass: "dv-header-columns"
+  }, [_c('span', [_vm._v("Search ")]), _vm._v(" "), _c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.query.search_column),
+      expression: "query.search_column"
+    }],
+    staticClass: "dv-header-select",
+    attrs: {
+      "name": "",
+      "id": ""
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.query.search_column = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.columns), function(column) {
+    return _c('option', {
+      domProps: {
+        "value": column,
+        "textContent": _vm._s(column)
+      }
+    })
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "dv-header-operators"
+  }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.query.search_operator),
+      expression: "query.search_operator"
+    }],
+    staticClass: "dv-header-select",
+    attrs: {
+      "name": "",
+      "id": ""
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.query.search_operator = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, _vm._l((_vm.operators), function(value, key) {
+    return _c('option', {
+      domProps: {
+        "value": key,
+        "textContent": _vm._s(value)
+      }
+    })
+  }))]), _vm._v(" "), _c('div', {
+    staticClass: "dv-header-search"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.query.search_input),
+      expression: "query.search_input"
+    }],
+    staticClass: "dv-header-input",
+    attrs: {
+      "type": "text",
+      "placeholder": "Search"
+    },
+    domProps: {
+      "value": (_vm.query.search_input)
+    },
+    on: {
+      "keyup": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+        _vm.fetchIndexData()
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.query.search_input = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "dv-header-submit"
+  }, [_c('button', {
+    staticClass: "dv-header-btn",
+    on: {
+      "click": function($event) {
+        _vm.fetchIndexData()
+      }
+    }
+  }, [_vm._v("Filter")])])]), _vm._v(" "), _c('div', {
+    staticClass: "dv-body"
+  }, [_c('table', {
+    staticClass: "dv-table"
+  }, [_c('thead', [_c('tr', _vm._l((_vm.columns), function(column) {
+    return _c('th', {
+      on: {
+        "click": function($event) {
+          _vm.toggleOrder(column)
+        }
+      }
+    }, [_c('span', {
+      domProps: {
+        "textContent": _vm._s(column)
+      }
+    }), _vm._v(" "), (column === _vm.query.column) ? _c('span', {
+      staticClass: "dv-table-column"
+    }, [(_vm.query.direction === 'desc') ? _c('span', [_vm._v("↑")]) : _vm._e(), _vm._v(" "), (_vm.query.direction === 'asc') ? _c('span', [_vm._v("↓")]) : _vm._e()]) : _vm._e()])
+  }))]), _vm._v(" "), _c('tbody', _vm._l((_vm.model.data), function(row) {
+    return _c('tr', _vm._l((row), function(value, key) {
+      return _c('td', {
+        domProps: {
+          "textContent": _vm._s(value)
+        }
+      })
+    }))
+  }))])]), _vm._v(" "), _c('div', {
+    staticClass: "dv-footer"
+  }, [_c('div', {
+    staticClass: "dv-footer-item"
+  }, [_c('span', [_vm._v("Displaying " + _vm._s(_vm.model.from) + " - " + _vm._s(_vm.model.to) + " of " + _vm._s(_vm.model.total) + " rows")])]), _vm._v(" "), _c('div', {
+    staticClass: "dv-footer-item"
+  }, [_c('div', {
+    staticClass: "dv-footer-sub"
+  }, [_c('span', [_vm._v("Rows Per Page")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.query.per_page),
+      expression: "query.per_page"
+    }],
+    staticClass: "dv-footer-input",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.query.per_page)
+    },
+    on: {
+      "keyup": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+        _vm.fetchIndexData()
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.query.per_page = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "dv-footer-sub"
+  }, [_c('button', {
+    staticClass: "dv-footer-btn",
+    on: {
+      "click": function($event) {
+        _vm.prev()
+      }
+    }
+  }, [_vm._v("«")]), _vm._v(" "), _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.query.page),
+      expression: "query.page"
+    }],
+    staticClass: "dv-footer-input",
+    attrs: {
+      "type": "text"
+    },
+    domProps: {
+      "value": (_vm.query.page)
+    },
+    on: {
+      "keyup": function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "enter", 13)) { return null; }
+        _vm.fetchIndexData()
+      },
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.query.page = $event.target.value
+      }
+    }
+  }), _vm._v(" "), _c('button', {
+    staticClass: "dv-footer-btn",
+    on: {
+      "click": function($event) {
+        _vm.next()
+      }
+    }
+  }, [_vm._v("»")])])])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-0255447e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

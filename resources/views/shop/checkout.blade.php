@@ -18,32 +18,32 @@ Laravel Shopping Cart
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name" name="name" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <input type="text" id="address" class="form-control" required>
+                            <input type="text" id="address" name="address" class="form-control" required>
                         </div>
                     </div>
                     <hr>
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="card-name">Card Holder Name</label>
-                            <input type="text" id="card-name" class="form-control" required>
+                            <input type="text" id="card-name" name="card-name" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="card-number">Credit Card Number</label>
-                            <input type="text" id="card-number" class="form-control" required>
+                            <input type="text" id="card-number" name="card-number" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label for="address_zip">Card Address Zip Code</label>
-                            <input type="text" id="address_zip" class="form-control" required>
+                            <input type="text" id="address_zip" name="address_zip" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-xs-12">
